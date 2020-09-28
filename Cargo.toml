@@ -1,0 +1,18 @@
+[package]
+name = "SuperAdvancedSpaceAdventure"
+version = "0.0.1"
+authors = ["Nils Sabelstrom <Nilssab@gmail.com>"]
+edition = "2018"
+description = "Advanced turn-based space RPG"
+readme = "README.md"
+repository = "https://github.com/nilssab/SuperAdvancedSpaceAdventure/"
+license = "MIT"
+
+[dependencies]
+vulkano = "0.19"
+vulkano-shaders = "0.19"
+vulkano-win = "0.19"
+winit = "0.22"
+cmake = "0.1"
+rand = "0.7.0"
+cgmath = "0.17"
