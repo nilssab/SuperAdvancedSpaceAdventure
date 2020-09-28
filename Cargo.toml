@@ -1,5 +1,5 @@
 [package]
-name = "SuperAdvancedSpaceAdventure"
+name = "super_advanced_space_adventure"
 version = "0.0.1"
 authors = ["Nils Sabelstrom <Nilssab@gmail.com>"]
 edition = "2018"

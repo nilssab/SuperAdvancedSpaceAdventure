@@ -22,59 +22,9 @@ use winit::window::{Window, WindowBuilder};
 use std::sync::Arc;
 use rand::Rng;
 
-#[derive(Debug)]
-struct Cord(f32, f32, f32);
-#[derive(Debug)]
-struct Vertex1(f32, f32, f32);
 
-#[derive(Debug)]
-struct Box {
-    w: f32,
-    d: f32,
-    l: f32,
-    cord: Cord,
-    thetaxy: f32,
-    thetaxz: f32,
-    vertex_list: Option<Vertex1>, 
-}
 
-impl Box {
-    fn volume(&self) -> f32 {
-	self.w * self.d * self.l
-    }
-}
-
-#[derive(Debug)]
-enum DebugAction {
-    Quit,
-    CreateBox {w: f32, d: f32, l: f32, cord: Cord, thetaxy: f32, thetaxz: f32},
-    ChangeColor (i32, i32, i32),
-}
-
-    
 fn main() {
-    let d_action1 = DebugAction::ChangeColor(50,50,30);
-
-    let cord0 = Cord (0.0, 0.0, 0.0);
-    let box_default = Box {
-	w: 0.1,
-	d: 0.1,
-	l: 0.1,
-	cord: cord0,
-	thetaxy: 0.0,
-	thetaxz: 0.0,
-	vertex_list: None,	
-    };
-
-    let box1 = Box {
-	w: 2.0,
-	d: 1.5,
-	l: 1.5,
-	..box_default
-    };
-    println!("Box1 Volume is {}", box1.volume());
-    println!("the waiting Debug Action is {:?}", d_action1);
-    
     // Get list of required extensions
     let required_extensions = vulkano_win::required_extensions();
 
