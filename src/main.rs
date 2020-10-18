@@ -28,7 +28,7 @@ mod game_data;
 
 fn main() {
 
-    // Just som rust test code..
+    // Here I am just trying out the game data structures
 
     game_data::initialize();
     let mut player_ship = game_data::Ship::create("PlayerShip",20,25,35);
@@ -40,6 +40,7 @@ fn main() {
 	player_ship.take_damage(rng.gen_range(5,16));
 	player_ship.print_current();
     }
+    
     // Get list of required extensions
     let required_extensions = vulkano_win::required_extensions();
 
