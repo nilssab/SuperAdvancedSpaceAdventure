@@ -20,11 +20,36 @@ use winit::event_loop::{ControlFlow, EventLoop};
 use winit::window::{Window, WindowBuilder};
 
 use std::sync::Arc;
-use rand::Rng;
 
+//use rand::Rng;
+use std::io;
 
+mod game_data;
 
 fn main() {
+
+    // Just som rust test code..
+
+    game_data::run();
+    let mut player_ship = game_data::Ship::create("PlayerShip",20,25,35);
+    println!("{:?}",player_ship);
+    player_ship.take_damage(10);
+    println!("{:?}",player_ship);
+    player_ship.take_damage(10);
+    println!("{:?}",player_ship);
+    player_ship.take_damage(10);
+    println!("{:?}",player_ship);
+    player_ship.take_damage(10);
+    println!("{:?}",player_ship);
+    player_ship.take_damage(10);
+    println!("{:?}",player_ship);
+    player_ship.take_damage(10);
+    println!("{:?}",player_ship);
+    player_ship.take_damage(10);
+    println!("{:?}",player_ship);
+    player_ship.take_damage(10);
+    println!("{:?}",player_ship);
+    
     // Get list of required extensions
     let required_extensions = vulkano_win::required_extensions();
 
@@ -36,12 +61,23 @@ fn main() {
     for device in PhysicalDevice::enumerate(&instance){
 	let device_nr = device_nr + 1;
 	println!(
-	    "Device {}: {} (type: {:?}",
+	    "Device {0}: {1} (type: {2:?}",
 	    device_nr,
 	    device.name(),
 	    device.ty()
 	);
     }
+    
+    println!("Enter device number to use");
+    let mut inputline = String::new();
+    io::stdin().read_line(&mut inputline).expect("Failed to read line.");
+
+    let device_nr_input: u32 = match inputline.trim().parse(){
+	Ok(num) => num,
+	Err(_) => panic!{"non number"}
+    };
+    
+    println!("{}",device_nr_input);
 	
     let physical = PhysicalDevice::enumerate(&instance).next().unwrap();
      
@@ -170,9 +206,9 @@ fn main() {
 					gl_Position = vec4(position, 1.0);
 				}
 			"
-        }
-    }
 
+            }
+    }
     mod fs {
         vulkano_shaders::shader! {
             ty: "fragment",
