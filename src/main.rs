@@ -21,7 +21,7 @@ use winit::window::{Window, WindowBuilder};
 
 use std::sync::Arc;
 
-//use rand::Rng;
+use rand::Rng;
 use std::io;
 
 mod game_data;
@@ -30,26 +30,16 @@ fn main() {
 
     // Just som rust test code..
 
-    game_data::run();
+    game_data::initialize();
     let mut player_ship = game_data::Ship::create("PlayerShip",20,25,35);
-    println!("{:?}",player_ship);
-    player_ship.take_damage(10);
-    println!("{:?}",player_ship);
-    player_ship.take_damage(10);
-    println!("{:?}",player_ship);
-    player_ship.take_damage(10);
-    println!("{:?}",player_ship);
-    player_ship.take_damage(10);
-    println!("{:?}",player_ship);
-    player_ship.take_damage(10);
-    println!("{:?}",player_ship);
-    player_ship.take_damage(10);
-    println!("{:?}",player_ship);
-    player_ship.take_damage(10);
-    println!("{:?}",player_ship);
-    player_ship.take_damage(10);
-    println!("{:?}",player_ship);
-    
+    let mut rng = rand::thread_rng();
+
+    while player_ship.is_alive(){	
+	player_ship.regen();
+	player_ship.print_current();
+	player_ship.take_damage(rng.gen_range(5,16));
+	player_ship.print_current();
+    }
     // Get list of required extensions
     let required_extensions = vulkano_win::required_extensions();
 
